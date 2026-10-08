@@ -17,3 +17,9 @@ CyberRun 3D is a fast-paced 3D multiplayer-style obstacle course runner inspired
 | Jump / Double Jump | Spacebar | JUMP Button |
 | Dash | Left Shift | DASH Button |
 | Grapple Hook | E Key | HOOK Button |
+
+## 🚀 Getting Started
+```bash
+npm install
+npm run dev
+```
