@@ -9,3 +9,11 @@ CyberRun 3D is a fast-paced 3D multiplayer-style obstacle course runner inspired
 - **Swinging Pendulum Hammers**: Heavy physics-driven obstacle pendulums.
 - **Bouncy Launch Pads**: Springboards that launch players across hazard zones.
 - **Pink Slime Hazard Pit**: Bottomless pink toxic slime with automatic checkpoint respawn.
+
+## 🕹️ Controls
+| Action | Keyboard | Touch |
+|---|---|---|
+| Move | WASD / Arrow Keys | On-Screen Joystick |
+| Jump / Double Jump | Spacebar | JUMP Button |
+| Dash | Left Shift | DASH Button |
+| Grapple Hook | E Key | HOOK Button |
