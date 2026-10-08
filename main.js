@@ -33,3 +33,7 @@ const slimePlane = new THREE.Mesh(slimeGeo, slimeMat); slimePlane.rotation.x = -
 const envGeo = new THREE.InstancedMesh(new THREE.CylinderGeometry(2, 2, 10, 6), new THREE.MeshStandardMaterial({color: 0x111122, metalness: 0.8, roughness: 0.2}), 1000); scene.add(envGeo);
 const dummy = new THREE.Object3D(); let envCount = 0; for(let x=-5; x<5; x++) { for(let z=0; z<100; z++) { dummy.position.set(x*4 + (z%2===0?2:0), -15 - Math.random()*20, -z*3.5); dummy.updateMatrix(); envGeo.setMatrixAt(envCount++, dummy.matrix); } } envGeo.instanceMatrix.needsUpdate = true;
 const starGeo = new THREE.BufferGeometry(); const starCount = 3000; const starPos = new Float32Array(starCount * 3); for(let i=0; i<starCount; i++) { starPos[i*3] = (Math.random() - 0.5) * 500; starPos[i*3+1] = (Math.random() - 0.5) * 500; starPos[i*3+2] = (Math.random() - 0.5) * 500; } starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3)); const starMat = new THREE.PointsMaterial({color: 0x00ffff, size: 0.8, transparent: true, opacity: 0.6}); scene.add(new THREE.Points(starGeo, starMat));
+
+// --- GAME STATE ---
+const state = { level: 1, score: 0, jumps: 0, maxJumps: 1, dashReady: true, grappleBody: null, grappleConstraint: null, checkpoint: new THREE.Vector3(0, 10, 0), lastZ: 10, checkpointCount: 0, recordChk: parseInt(localStorage.getItem('recordChk') || '0'), nextCheckpointDist: 5 };
+if(document.getElementById('record-chk')) document.getElementById('record-chk').innerText = state.recordChk;
