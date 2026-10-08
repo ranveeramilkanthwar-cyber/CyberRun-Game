@@ -19,3 +19,8 @@ const cameraOffset = new THREE.Vector3(0, 8, 15);
 const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap; document.body.appendChild(renderer.domElement);
+camera.position.set(0, 15, 25); camera.lookAt(0, 10, 0);
+const controls = new OrbitControls(camera, renderer.domElement); controls.enableDamping = true; controls.dampingFactor = 0.1; controls.enablePan = false; controls.maxPolarAngle = Math.PI / 2 - 0.1; controls.minDistance = 10; controls.maxDistance = 60;
+const composer = new EffectComposer(renderer); composer.addPass(new RenderPass(scene, camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85); bloom.threshold = 0.2; bloom.strength = 0.3; bloom.radius = 0.1; composer.addPass(bloom);
+const glitch = new GlitchPass(); glitch.enabled = false; composer.addPass(glitch);
