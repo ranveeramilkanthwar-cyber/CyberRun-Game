@@ -37,3 +37,12 @@ const starGeo = new THREE.BufferGeometry(); const starCount = 3000; const starPo
 // --- GAME STATE ---
 const state = { level: 1, score: 0, jumps: 0, maxJumps: 1, dashReady: true, grappleBody: null, grappleConstraint: null, checkpoint: new THREE.Vector3(0, 10, 0), lastZ: 10, checkpointCount: 0, recordChk: parseInt(localStorage.getItem('recordChk') || '0'), nextCheckpointDist: 5 };
 if(document.getElementById('record-chk')) document.getElementById('record-chk').innerText = state.recordChk;
+
+// --- PLAYER (FALL GUY BEAN CHARACTER) ---
+const playerRadius = 1; const playerGroup = new THREE.Group(); const beanMat = new THREE.MeshPhysicalMaterial({ color: 0x00ffff, emissive: 0x00aaaa, roughness: 0.1, transmission: 0.9, thickness: 1.0 });
+const bodyMesh = new THREE.Mesh(new THREE.CapsuleGeometry(playerRadius, 2, 4, 16), beanMat); playerGroup.add(bodyMesh);
+const eyeMat = new THREE.MeshBasicMaterial({color: 0x000000}); const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.25), eyeMat); eyeR.position.set(0.4, 0.8, -0.9); playerGroup.add(eyeR); const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.25), eyeMat); eyeL.position.set(-0.4, 0.8, -0.9); playerGroup.add(eyeL);
+const armGeo = new THREE.CapsuleGeometry(0.3, 1.2); const armR = new THREE.Mesh(armGeo, beanMat); armR.position.set(1.2, 0, 0); armR.rotation.z = -Math.PI/8; playerGroup.add(armR); const armL = new THREE.Mesh(armGeo, beanMat); armL.position.set(-1.2, 0, 0); armL.rotation.z = Math.PI/8; playerGroup.add(armL);
+scene.add(playerGroup);
+const playerBody = new CANNON.Body({ mass: 5, material: physMat, shape: new CANNON.Sphere(1.5), position: new CANNON.Vec3(0, 10, 0) }); playerBody.fixedRotation = true; playerBody.updateMassProperties(); world.addBody(playerBody);
+const playerLight = new THREE.PointLight(0x00ffff, 3, 40); scene.add(playerLight);
