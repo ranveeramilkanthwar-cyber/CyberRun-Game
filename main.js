@@ -24,3 +24,9 @@ const controls = new OrbitControls(camera, renderer.domElement); controls.enable
 const composer = new EffectComposer(renderer); composer.addPass(new RenderPass(scene, camera));
 const bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85); bloom.threshold = 0.2; bloom.strength = 0.3; bloom.radius = 0.1; composer.addPass(bloom);
 const glitch = new GlitchPass(); glitch.enabled = false; composer.addPass(glitch);
+
+// --- LIGHTING & ENVIRONMENT ---
+const ambientLight = new THREE.AmbientLight(0x222222); scene.add(ambientLight);
+const dirLight = new THREE.DirectionalLight(0xffffff, 1); dirLight.position.set(50, 100, 50); dirLight.castShadow = true; scene.add(dirLight);
+const slimeGeo = new THREE.PlaneGeometry(2000, 2000); const slimeMat = new THREE.MeshStandardMaterial({ color: 0xff00aa, emissive: 0xff0055, emissiveIntensity: 0.5, transparent: true, opacity: 0.8 });
+const slimePlane = new THREE.Mesh(slimeGeo, slimeMat); slimePlane.rotation.x = -Math.PI / 2; slimePlane.position.y = -15; scene.add(slimePlane);
