@@ -23,3 +23,8 @@ CyberRun 3D is a fast-paced 3D multiplayer-style obstacle course runner inspired
 npm install
 npm run dev
 ```
+
+## 🏆 Status
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]() [![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)]()
+
+Enjoy CyberRun 3D!
