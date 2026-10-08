@@ -1,0 +1,2 @@
+// Web Audio API Sound Synthesizer for Fall Guys CyberRun
+class SoundEngine { constructor() { this.ctx = null; } init() { if(!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } playTone(freq, dur) { if(!this.ctx) return; const osc = this.ctx.createOscillator(); const gain = this.ctx.createGain(); osc.frequency.value = freq; osc.connect(gain); gain.connect(this.ctx.destination); osc.start(); gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + dur); osc.stop(this.ctx.currentTime + dur); } } export const sound = new SoundEngine();
