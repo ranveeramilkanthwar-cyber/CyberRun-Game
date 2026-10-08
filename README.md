@@ -8,3 +8,4 @@ CyberRun 3D is a fast-paced 3D multiplayer-style obstacle course runner inspired
 - **Dynamic Sweeper Arms**: Rotating neon hazard beams with authentic physics bounce.
 - **Swinging Pendulum Hammers**: Heavy physics-driven obstacle pendulums.
 - **Bouncy Launch Pads**: Springboards that launch players across hazard zones.
+- **Pink Slime Hazard Pit**: Bottomless pink toxic slime with automatic checkpoint respawn.
